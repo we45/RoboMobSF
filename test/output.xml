@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180626 14:41:27.544" generator="Robot 3.0.4 (Python 2.7.12 on linux2)">
+<suite source="/home/umar/Desktop/RobotFramework-Dev/RoboMobSF/test/RoboMobSF.robot" id="s1" name="RoboMobSF">
+<test id="s1-t1" name="Run MobSF against target file">
+<kw name="Run Mobsf Against File" library="RoboMobSF">
+<doc>Automate all the MobSF task by grouping all function call into a single method</doc>
+<arguments>
+<arg>${TARGET_FILE}</arg>
+<arg>${REPORT_PATH}</arg>
+</arguments>
+<msg timestamp="20180626 14:41:49.180" level="INFO">9d6fd1494b188a19824044b0c81727acc861d530f3f1f3fde6509e47a60052f1</msg>
+<msg timestamp="20180626 14:41:49.408" level="INFO">Fie Upload Sucessfully!</msg>
+<msg timestamp="20180626 14:41:49.409" level="INFO">Filename: InsecureBankv2.apk 
+ Hash: bc63196432305e99108f30f725bbdff0 
+ Scan Type: apk </msg>
+<msg timestamp="20180626 14:43:34.186" level="INFO">Scan Completed!</msg>
+<msg timestamp="20180626 14:43:41.821" level="INFO">Report saved as report.pdf in the report directory</msg>
+<msg timestamp="20180626 14:43:43.581" level="INFO">Report saved as report.json in the report directory</msg>
+<msg timestamp="20180626 14:43:56.105" level="INFO">MobSF docker container is stopped and removed sucessfully</msg>
+<status status="PASS" endtime="20180626 14:43:56.106" starttime="20180626 14:41:27.615"></status>
+</kw>
+<status status="PASS" endtime="20180626 14:43:56.107" critical="yes" starttime="20180626 14:41:27.615"></status>
+</test>
+<status status="PASS" endtime="20180626 14:43:56.110" starttime="20180626 14:41:27.545"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="RoboMobSF" pass="1">RoboMobSF</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
