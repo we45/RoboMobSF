@@ -6,7 +6,7 @@ Robot Framework Library for MobSF (SAST) Tool
 
 ### Install Instructions
 * You need docker to run this program
-* Pull the brakeman docker image: `docker pull opensecurity/mobile-security-framework-mobsf`
+* Pull the MobSF docker image: `docker pull opensecurity/mobile-security-framework-mobsf`
 * Run the command `python setup.py install`  
 * Create a `.robot` file that includes the keywords used by RoboMobSF Library
 
