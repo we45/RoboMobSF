@@ -15,7 +15,7 @@ sys.setdefaultencoding('UTF8')
 class RoboMobSF(object):
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 
-    def __init__(self,url,port):
+    def __init__(self,url,port,api_key):
         '''
         RoboMobSF Library should be imported with two argument
 
@@ -28,14 +28,15 @@ class RoboMobSF(object):
 
         | = Keyword Definition =  | = Description =  |
 
-        | Library | RoboMobSF | proxy | 
+        | Library | RoboMobSF | proxy | port | api_key |
 
         '''
 
         self.client = docker.from_env()
         self.url = url
         self.port = port
-        self.mobsf_docker = "opensecurity/mobile-security-framework-mobsf"
+        self.api_key = api_key
+        self.mobsf_docker = "we45/mobsf"
 
     def start_mobsf_docker(self):
 
@@ -43,7 +44,7 @@ class RoboMobSF(object):
             Start MobSF Docker for running Static Analysis against the Target File i.e apk, zip, ipa, or appx
         '''
         try:
-            container_obj=self.client.containers.run(image=self.mobsf_docker,ports={'8000/tcp':self.port},detach=True)
+            container_obj=self.client.containers.run(image=self.mobsf_docker,ports={'8000/tcp':self.port},environment={"MOBSF_API_KEY": self.api_key },detach=True)
             self.container_obj = container_obj
 
             time.sleep(20)
@@ -61,17 +62,17 @@ class RoboMobSF(object):
             logger.info('Error: {0} {1}'.format(e, exc_traceback.tb_lineno))
 
 
-    def get_api_key(self):
-        docker_exec = self.container_obj.exec_run('sh -c "cat ~/.MobSF/secret"')
-        if(docker_exec.exit_code == 0):
-            secret_key = docker_exec.output
-            hash_object = hashlib.sha256(secret_key.encode('utf-8'))
-            self.api_key =  hash_object.hexdigest()
-            logger.info(self.api_key)
+    # def get_api_key(self):
+    #     docker_exec = self.container_obj.exec_run('sh -c "cat ~/.MobSF/secret"')
+    #     if(docker_exec.exit_code == 0):
+    #         secret_key = docker_exec.output
+    #         hash_object = hashlib.sha256(secret_key.encode('utf-8'))
+    #         self.api_key =  hash_object.hexdigest()
+    #         logger.info(self.api_key)
 
-        else:
-            logger.info("Error :{}".format(docker_exec.output))
-            self.kill_mobsf_container()
+    #     else:
+    #         logger.info("Error :{}".format(docker_exec.output))
+    #         self.kill_mobsf_container()
 
     def upload_file(self,target_file):
 
@@ -194,7 +195,7 @@ class RoboMobSF(object):
 
         
         self.start_mobsf_docker()
-        self.get_api_key()
+        # self.get_api_key()
         self.upload_file(target_file)
         self.run_scan()
         self.generate_pdf(report_path)
