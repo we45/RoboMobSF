@@ -20,7 +20,7 @@ setup(
     install_requires=[
         'docker',
         'robotframework==3.0.4',
-        'requests==2.19.1',
+        'requests==2.20.0',
         'requests-toolbelt==0.8.0'
     ],
     long_description = long_description,
