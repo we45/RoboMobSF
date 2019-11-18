@@ -7,8 +7,9 @@ import hashlib
 import time
 import sys
 
-reload(sys)
-sys.setdefaultencoding('UTF8')
+# Removed to support Python 3
+# reload(sys)
+# sys.setdefaultencoding('UTF8')
 
 
 
