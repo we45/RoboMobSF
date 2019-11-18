@@ -2,7 +2,7 @@
 
 Robot Framework Library for MobSF (SAST) Tool
 
-**Supports Python 2.7.x for now**
+**Supports Python 3.6.x for now**
 
 ### Install Instructions
 * You need docker to run this program
